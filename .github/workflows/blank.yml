@@ -20,8 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       packagejson: ${{ steps.changesfiles.outputs.packagejson }}
-      all: ${{ steps.changesfiles.outputs.all }}
-      hello: ${{ steps.changesfiles.outputs.hello }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -43,9 +41,7 @@ jobs:
         id: changesfiles
         # Set outputs using the command.
         run: |
-          echo "::set-output name=all::$(git diff-tree --no-commit-id --name-only -r HEAD | xargs)"
           echo "::set-output name=packagejson::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep package.json$ | xargs)"   
-          echo "::set-output name=hello::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} )"
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       
@@ -73,6 +69,6 @@ jobs:
         run: echo running on branch ${GITHUB_REF##*/}
   
       - name: print build echo
-        run: echo ${{needs.buildnpm.outputs.packagejson}} ${{needs.buildnpm.outputs.all}} ${{needs.buildnpm.outputs.hello}}
+        run: echo ${{needs.buildnpm.outputs.packagejson}}
           
       
