@@ -4,8 +4,6 @@ name: CI
 
 on:
   push:
-    branches:
-        - test1
     paths:
       - 'package.json'
 
