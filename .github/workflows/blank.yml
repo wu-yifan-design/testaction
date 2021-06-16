@@ -32,8 +32,9 @@ jobs:
           password: ${{ secrets.DOCKERPWD }}
   
       - name: Build and push
+        if: github.ref == 'refs/heads/test2'
         run: |
-          docker build -t xiaohongczh/test1:preview -f ./Dockfile .
+          docker build -t xiaohongczh/test1:${GITHUB_REF##*/} -f ./Dockfile .
           docker push xiaohongczh/test1:${GITHUB_REF##*/}
           
       - name: Image digest
