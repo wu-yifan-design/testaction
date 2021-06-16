@@ -32,8 +32,8 @@ jobs:
         id: changesfiles
         # Set outputs using the command.
         run: |
-          echo "::set-output name=all::$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }} | xargs)"
-          echo "::set-output name=packagejson::$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }} | grep package.json$ | xargs)"   
+          echo "::set-output name=all::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
+          echo "::set-output name=packagejson::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep package.json$ | xargs)"   
           echo "::set-output name=hello::${{ github.sha }}"
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
