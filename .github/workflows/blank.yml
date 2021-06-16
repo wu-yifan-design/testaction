@@ -26,8 +26,11 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       
-      - uses: actions/checkout@v2
-      - run: git checkout HEAD^
+      - name: Checkout Code  
+      - run: |
+        sudo git clone https://.:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+        sudo git checkout ${GITHUB_REF##*/}
+
         
       - name: Get changed files
         id: changesfiles
