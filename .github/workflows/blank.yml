@@ -4,6 +4,8 @@ name: CI
 
 on:
   push:
+    branches:
+        - test1
     paths:
       - 'package.json'
 
@@ -34,7 +36,7 @@ jobs:
       - name: Build and push
         run: |
           docker build -t xiaohongczh/test1:preview -f ./Dockfile .
-          docker push xiaohongczh/test1:preview
+          docker push xiaohongczh/test1:${GITHUB_REF##*/}
           
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
