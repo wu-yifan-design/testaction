@@ -25,11 +25,9 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        
-      - name: checkout cli
-        run: git checkout HEAD^
+      
+      - uses: actions/checkout@v2
+      - run: git checkout HEAD^
         
       - name: Get changed files
         id: changesfiles
