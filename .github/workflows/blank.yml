@@ -28,13 +28,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
+      - name: checkout cli
+        run: git checkout HEAD^
+        
       - name: Get changed files
         id: changesfiles
         # Set outputs using the command.
         run: |
           echo "::set-output name=all::$(git diff-tree --no-commit-id --name-only -r HEAD | xargs)"
           echo "::set-output name=packagejson::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep package.json$ | xargs)"   
-          echo "::set-output name=hello::$(git diff-tree --no-commit-id --name-only -r HEAD)"
+          echo "::set-output name=hello::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} )"
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       
