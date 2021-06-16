@@ -27,12 +27,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       # sudo git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
       # sudo chmod 777 -R .
+      # sudo gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+      # sudo gh repo clone sutcalag/testaction
       
       - name: Checkout Code  
         run: |
           cd ..
-          sudo gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
-          sudo gh repo clone sutcalag/testaction
+          sudo git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/sutcalag/testaction.git
+          cd testaction
+          sudo chmod 777 -R .
           sudo git checkout ${GITHUB_REF##*/}
 
         
