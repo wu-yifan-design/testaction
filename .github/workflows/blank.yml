@@ -7,6 +7,10 @@ on:
     branches:    
       - test2
       - main
+  pull_request:
+    branches:
+      - test2
+      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
