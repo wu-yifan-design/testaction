@@ -31,8 +31,8 @@ jobs:
       - name: Checkout Code  
         run: |
           cd ..
-          gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
-          gh repo clone sutcalag/testaction
+          sudo gh auth login --with-token < ${{ secrets.GITHUB_TOKEN }}
+          sudo gh repo clone sutcalag/testaction
           sudo git checkout ${GITHUB_REF##*/}
 
         
