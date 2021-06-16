@@ -32,7 +32,7 @@ jobs:
         id: changesfiles
         # Set outputs using the command.
         run: |
-          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | xargs)"
+          echo "::set-output name=all::$(git diff --name-only --diff-filter=ACMRT ${{ github.ref.sha }} ${{ github.sha }} | xargs)"
           echo "::set-output name=packagejson::$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep package.json$ | xargs)"   
           echo "::set-output name=hello::${{ github.sha }}"
       - name: Branch name
