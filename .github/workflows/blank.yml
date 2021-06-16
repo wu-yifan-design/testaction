@@ -25,10 +25,11 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # sudo git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
       
       - name: Checkout Code  
         run: |
-          sudo git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          gh repo clone sutcalag/testaction
           sudo git checkout ${GITHUB_REF##*/}
 
         
