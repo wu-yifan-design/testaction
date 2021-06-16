@@ -34,7 +34,7 @@ jobs:
         run: |
           echo "::set-output name=all::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
           echo "::set-output name=packagejson::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep package.json$ | xargs)"   
-          echo "::set-output name=hello::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
+          echo "::set-output name=hello::$(git diff-tree --no-commit-id --name-only -r HEAD | xargs)"
       - name: Branch name
         run: echo running on branch ${GITHUB_REF##*/}
       
