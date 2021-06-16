@@ -28,7 +28,7 @@ jobs:
       
       - name: Checkout Code  
         run: |
-          sudo git clone https://.:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+          sudo git clone https://.:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           sudo git checkout ${GITHUB_REF##*/}
 
         
