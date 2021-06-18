@@ -1,0 +1,10 @@
+
+name: Build and deploy container app to Azure Web App - milvus-io
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '* * * * *'
+
+- name: Auto-add contributors
+  uses: BobAnkh/add-contributors@v0.0.8
