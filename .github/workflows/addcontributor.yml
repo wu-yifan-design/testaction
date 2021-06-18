@@ -5,6 +5,9 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '* * * * *'
-
-- name: Auto-add contributors
-  uses: BobAnkh/add-contributors@v0.0.8
+jobs:
+  add:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto-add contributors
+        uses: BobAnkh/add-contributors@v0.0.8
